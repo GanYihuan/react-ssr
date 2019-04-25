@@ -1,14 +1,20 @@
 ﻿import React from 'react'
 import {renderToString} from 'react-dom/server'
 import express from 'express'
-import Home from './containers/Home'
+import {StaticRouter} from 'react-router-dom' // 服务器端渲染路由
+import Routes from '../Routes'
 
 const app = express()
-app.use(express.static('public')) // 同构：一套react代码，在服务器端和客户端分别运行一次
-
-const content = renderToString(<Home/>)
+app.use(express.static('public')) // 同构：一套 react 代码，在服务器端和客户端分别运行一次
 
 app.get('/', function(req, res) {
+  const content = renderToString((
+    // context 数据通信
+    // location 路径
+    <StaticRouter context={{}} location={req.path}>
+      {Routes}
+    </StaticRouter>
+  ))
   res.send(
     `
     <html>
