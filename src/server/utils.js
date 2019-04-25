@@ -1,9 +1,9 @@
 ﻿import React from 'react'
-import {renderToString} from 'react-dom/server'
-import {StaticRouter} from 'react-router-dom' // 服务器端渲染路由
+import { renderToString } from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom' // 服务器端渲染路由
 import Routes from '../Routes'
 
-export const rener = (req) => {
+export const render = (req) => {
   const content = renderToString((
     // context 数据通信
     // location 路径

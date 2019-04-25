@@ -1,5 +1,5 @@
 ﻿import express from 'express'
-import {render} from './utils'
+import { render } from './utils'
 
 const app = express()
 app.use(express.static('public')) // 同构：一套 react 代码，在服务器端和客户端分别运行一次
