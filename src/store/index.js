@@ -1,9 +1,16 @@
-﻿import { createStore, applyMiddleware } from 'redux'
+﻿import {
+  createStore,
+  applyMiddleware,
+  combineReducers
+} from 'redux'
 import thunk from 'redux-thunk'
 
-const reducer = (state = {name: 'gan'}, action) => {
-  return state
-}
+import {reducer as homeReducter} from '../containers/Home/store'
+
+const reducer = combineReducers({
+  home: homeReducter
+})
+
 const getStore = () => {
   return createStore(reducer, applyMiddleware(thunk))
 }

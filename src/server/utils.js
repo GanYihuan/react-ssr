@@ -10,7 +10,7 @@ export const render = (req) => {
   const content = renderToString((
     // context 数据通信
     // location 路径
-    <Provider store={ getStore() }>
+    <Provider store={getStore()}>
       <StaticRouter context={{}} location={req.path}>
         {Routes}
       </StaticRouter>
