@@ -11,8 +11,8 @@ export const render = (req) => {
     // context 数据通信
     // location 路径
     <Provider store={ getStore() }>
-      <StaticRouter context={{}} location={ req.path }>
-        { Routes }
+      <StaticRouter context={{}} location={req.path}>
+        {Routes}
       </StaticRouter>
     </Provider>
   ))
