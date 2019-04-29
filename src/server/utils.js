@@ -1,17 +1,18 @@
 ﻿import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom' // 服务器端渲染路由
+import { Provider } from 'react-redux'
+
 import Routes from '../Routes'
-import {Provider} from 'react-redux'
 import getStore from '../store'
 
 export const render = (req) => {
   const content = renderToString((
     // context 数据通信
     // location 路径
-    <Provider store={getStore()}>
-      <StaticRouter context={{}} location={req.path}>
-        {Routes}
+    <Provider store={ getStore() }>
+      <StaticRouter context={{}} location={ req.path }>
+        { Routes }
       </StaticRouter>
     </Provider>
   ))
