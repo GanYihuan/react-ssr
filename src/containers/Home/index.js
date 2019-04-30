@@ -7,10 +7,16 @@ import {getHomeList} from './store/actions'
 
 class Home extends Component {
   render() {
+    console.log(this.props.list)
     return (
       <div>
         <Header/>
         <div>Home, {this.props.name}</div>
+        {/* {
+          this.props.list.map((item) => {
+            return <div key={item.id}>{item.title}</div>
+          })
+        } */}
         <button onClick={() => {alert('click1')}}>click</button>
       </div>
     )
@@ -31,6 +37,7 @@ class Home extends Component {
 // }
 
 const mapStateToProps = state => ({
+  list: state.home.newList,
   name: state.home.name
 })
 
