@@ -4,7 +4,6 @@
   combineReducers
 } from 'redux'
 import thunk from 'redux-thunk'
-
 import {reducer as homeReducter} from '../containers/Home/store'
 
 const reducer = combineReducers({

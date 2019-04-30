@@ -2,7 +2,6 @@
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom' // 服务器端渲染路由
 import { Provider } from 'react-redux'
-
 import Routes from '../Routes'
 import getStore from '../store'
 
