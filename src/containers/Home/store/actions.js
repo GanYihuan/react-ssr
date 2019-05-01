@@ -1,6 +1,8 @@
 ﻿import axios from 'axios'
 import config from '../../../config'
 import {CHANGE_LIST} from './constants'
+import clientAxios from '../../../client/request'
+import serverAxios from '../../../server/request'
 
 // action creator
 const changeList = (list) => ({
@@ -9,15 +11,10 @@ const changeList = (list) => ({
 })
 
 export const getHomeList = (server) => { // async
-  let url = ''
-  if (server) {
-    url = 'http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE'
-  } else {
-    url = '/api/news.json?secret=PP87ANTIPIRATE'
-  }
+  const request = server ? serverAxios : clientAxios
   return (dispatch) => {
     // return promises result
-    return axios
+    return request
       // .get('http://47.95.113.63/ssr/api/news.json?secret=`${config.secret}`')
       // .get('http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE')
       .get('/api/news.json?secret=PP87ANTIPIRATE')
