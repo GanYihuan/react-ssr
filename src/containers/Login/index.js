@@ -5,7 +5,7 @@ const Login = () => {
   return (
     <div>
        {/* <Header/> */}
-      <div>Login</div>
+      <div>登录</div>
     </div>
   )
 }

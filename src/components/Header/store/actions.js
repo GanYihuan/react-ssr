@@ -5,7 +5,27 @@ export const changeLogin = (value) => ({
   value
 })
 
-export const getHeaderInfo = (server) => { // async
+export const login = () => { // async
+  return (dispatch, getState, axiosInstance) => { // axiosInstance： withExtraArgument 传递的参数
+    return axiosInstance
+      .get('/api/login.json?secret=PP87ANTIPIRATE')
+      .then((res) => {
+        dispatch(changeLogin(true))
+      })
+  }
+}
+
+export const logout = () => { // async
+  return (dispatch, getState, axiosInstance) => { // axiosInstance： withExtraArgument 传递的参数
+    return axiosInstance
+      .get('/api/logout.json?secret=PP87ANTIPIRATE')
+      .then((res) => {
+        dispatch(changeLogin(false))
+      })
+  }
+}
+
+export const getHeaderInfo = () => { // async
   return (dispatch, getState, axiosInstance) => { // axiosInstance： withExtraArgument 传递的参数
     return axiosInstance
       .get('/api/isLogin.json?secret=PP87ANTIPIRATE')
