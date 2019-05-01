@@ -4,12 +4,14 @@
   combineReducers
 } from 'redux'
 import thunk from 'redux-thunk'
-import {reducer as homeReducter} from '../containers/Home/store'
+import { reducer as homeReducter } from '../containers/Home/store'
+import { reducer as headerReducter } from '../components/Header/store'
 import clientAxios from '../client/request'
 import serverAxios from '../server/request'
 
 const reducer = combineReducers({
-  home: homeReducter
+  home: homeReducter,
+  header: headerReducter
 })
 
 export const getStore = () => {
