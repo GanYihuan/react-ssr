@@ -14,8 +14,8 @@ const reducer = combineReducers({
   header: headerReducter
 })
 
-export const getStore = () => {
-  return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverAxios)))
+export const getStore = (req) => {
+  return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverAxios(req))))
 }
 
 export const getClientStore = () => {

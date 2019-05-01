@@ -2,7 +2,7 @@
 import { renderRoutes } from 'react-router-config'
 import Header from './components/Header'
 // import Routes from './Routes';
-import { actions } from './components/Header/store/actions'
+import { actions } from './components/Header/store'
 
 const App = (props) => {
   return (
@@ -16,7 +16,7 @@ const App = (props) => {
 }
 
 App.loadData = (store) => {
-  store.dispatch(actions.getHeaderInfo())
+  return store.dispatch(actions.getHeaderInfo())
 }
 
 export default App

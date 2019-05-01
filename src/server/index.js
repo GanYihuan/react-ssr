@@ -17,20 +17,20 @@ app.use('/api', proxy('http://47.95.113.63', {
 // 同构: 一套 react 代码，在服务器端和客户端分别运行一次
 app.use(express.static('public')) // express.static(): 请求静态文件就到 public 目录去找
 app.get('*', function(req, res) {
-  const store = getStore()
+  const store = getStore(req)
   const matchedRoutes = matchRoutes(routes, req.path)
-  // const promises = []
-  // matchedRoutes.forEach(item => {
-  //   if (item.route.loadData) {
-  //     promises.push(item.route.loadData(store))
-  //   }
-  //   item.route.loadData(store) // 调用匹配到的路由组件, 执行该组件下的 lodaData()
-  // })
-  // Promise
-  //   .all(promises)
-  //   .then(() => {
+  const promises = []
+  matchedRoutes.forEach(item => { // 让 matchRoutes 里面所有组件对应的 loadData 方法执行一次
+    if (item.route.loadData) {
+      promises.push(item.route.loadData(store))
+    }
+    // item.route.loadData(store) // 调用匹配到的路由组件, 执行该组件下的 lodaData()
+  })
+  Promise
+    .all(promises)
+    .then(() => {
       res.send(render(store, routes, req))
-    // })
+    })
 })
 
 let server = app.listen(3000)
