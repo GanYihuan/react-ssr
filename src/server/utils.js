@@ -1,19 +1,20 @@
 ﻿import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter, Route, matchPath } from 'react-router-dom' // 服务器端渲染路由
+import { matchRoutes } from 'react-router-config' // 能匹配子路由, matchPath 只匹配父级路由
 import { Provider } from 'react-redux'
 import routes from '../Routes'
 import getStore from '../store'
 
 export const render = (req) => {
   const store = getStore()
-  const matchRoutes = []
-  routes.some(route => {
-    const match = matchPath(req.path, route)
-    if (match) {
-      matchRoutes.push(route)
-    }
-  })
+  const matchedRoutes = matchRoutes(routes, req.path)
+  // routes.some(route => {
+  //   const match = matchPath(req.path, route)
+  //   if (match) {
+  //     matchedRoutes.push(route)
+  //   }
+  // })
   const content = renderToString((
     // context 数据通信
     // location 路径
