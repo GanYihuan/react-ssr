@@ -202,7 +202,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _expressHttpProxy = __webpack_require__(!(function webpackMissingModule() { var e = new Error(\"Cannot find module 'express-http-proxy'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));\n\nvar _expressHttpProxy2 = _interopRequireDefault(_expressHttpProxy);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _utils = __webpack_require__(/*! ./utils */ \"./src/server/utils.js\");\n\nvar _store = __webpack_require__(/*! ../store */ \"./src/store/index.js\");\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// node 变成代理服务器 (易于代码纠错)\nvar app = (0, _express2.default)();\n\n// 当访问 /api 路由时代理到指定服务器地址\n// 能匹配子路由, matchPath 只匹配父级路由\napp.use('/api', (0, _expressHttpProxy2.default)('http://47.95.113.63'), {\n  proxyReqPathResolver: function proxyReqPathResolver(req) {\n    // console.log(req.url) // /news.json?secret=PP87ANTIPIRATE\n    return '/ssr/api' + req.url;\n  }\n});\n// 同构: 一套 react 代码，在服务器端和客户端分别运行一次\napp.use(_express2.default.static('public')); // express.static(): 请求静态文件就到 public 目录去找\napp.get('*', function (req, res) {\n  var store = (0, _store.getStore)();\n  var matchedRoutes = (0, _reactRouterConfig.matchRoutes)(_Routes2.default, req.path);\n  var promises = [];\n  matchedRoutes.forEach(function (item) {\n    if (item.route.loadData) {\n      promises.push(item.route.loadData(store));\n    }\n    item.route.loadData(store); // 调用匹配到的路由组件, 执行该组件下的 lodaData()\n  });\n  Promise.all(promises).then(function () {\n    res.send((0, _utils.render)(store, _Routes2.default, req));\n  });\n});\n\nvar server = app.listen(3000);\n\n//# sourceURL=webpack:///./src/server/index.js?");
+eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _expressHttpProxy = __webpack_require__(/*! express-http-proxy */ \"express-http-proxy\");\n\nvar _expressHttpProxy2 = _interopRequireDefault(_expressHttpProxy);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _utils = __webpack_require__(/*! ./utils */ \"./src/server/utils.js\");\n\nvar _store = __webpack_require__(/*! ../store */ \"./src/store/index.js\");\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// node 变成代理服务器 (易于代码纠错)\nvar app = (0, _express2.default)();\n\n// 当访问 /api 路由时代理到指定服务器地址\n// 能匹配子路由, matchPath 只匹配父级路由\napp.use('/api', (0, _expressHttpProxy2.default)('http://47.95.113.63', {\n  proxyReqPathResolver: function proxyReqPathResolver(req) {\n    // console.log(req.url) // /news.json?secret=PP87ANTIPIRATE\n    return '/ssr/api' + req.url;\n  }\n}));\n// 同构: 一套 react 代码，在服务器端和客户端分别运行一次\napp.use(_express2.default.static('public')); // express.static(): 请求静态文件就到 public 目录去找\napp.get('*', function (req, res) {\n  var store = (0, _store.getStore)();\n  var matchedRoutes = (0, _reactRouterConfig.matchRoutes)(_Routes2.default, req.path);\n  // const promises = []\n  // matchedRoutes.forEach(item => {\n  //   if (item.route.loadData) {\n  //     promises.push(item.route.loadData(store))\n  //   }\n  //   item.route.loadData(store) // 调用匹配到的路由组件, 执行该组件下的 lodaData()\n  // })\n  // Promise\n  //   .all(promises)\n  //   .then(() => {\n  res.send((0, _utils.render)(store, _Routes2.default, req));\n  // })\n});\n\nvar server = app.listen(3000);\n\n//# sourceURL=webpack:///./src/server/index.js?");
 
 /***/ }),
 
@@ -249,6 +249,17 @@ eval("module.exports = require(\"axios\");\n\n//# sourceURL=webpack:///external_
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
+
+/***/ }),
+
+/***/ "express-http-proxy":
+/*!*************************************!*\
+  !*** external "express-http-proxy" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"express-http-proxy\");\n\n//# sourceURL=webpack:///external_%22express-http-proxy%22?");
 
 /***/ }),
 
