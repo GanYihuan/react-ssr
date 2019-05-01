@@ -34,6 +34,10 @@ class Home extends Component {
 //   )
 // }
 
+// 服务器端渲染前把这个路由需要的数据提前加载好
+Home.loadData = () => {
+}
+
 const mapStateToProps = state => ({
   list: state.home.newList,
   name: state.home.name
