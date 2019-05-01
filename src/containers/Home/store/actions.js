@@ -8,9 +8,10 @@ const changeList = (list) => ({
   list
 })
 
-export const getHomeList = () => {
+export const getHomeList = () => { // async
   return (dispatch) => {
-    axios
+    // return promises result
+    return axios
       // .get('http://47.95.113.63/ssr/api/news.json?secret=`${config.secret}`')
       .get('http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE')
       .then((res) => {

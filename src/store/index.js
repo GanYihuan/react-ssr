@@ -10,8 +10,11 @@ const reducer = combineReducers({
   home: homeReducter
 })
 
-const getStore = () => {
+export const getStore = () => {
   return createStore(reducer, applyMiddleware(thunk))
 }
 
-export default getStore
+export const getClientStore = () => {
+  const defaultState = window.context.state // 服务器端 window.context 数据注水; 客户端 window.context 数据脱水
+  return createStore(reducer, defaultState, applyMiddleware(thunk))
+}

@@ -16,7 +16,9 @@ class Home extends Component {
     )
   }
   componentDidMount() { // 只在客户端渲染
-    this.props.getHomeList()
+    if (!this.props.list.length) {
+      this.props.getHomeList()
+    }
   }
   getList() {
     const {list} = this.props
@@ -35,7 +37,8 @@ class Home extends Component {
 // }
 
 // 服务器端渲染前把这个路由需要的数据提前加载好
-Home.loadData = () => {
+Home.loadData = (store) => {
+  return store.dispatch(getHomeList()) // return promises result, because getHomeList() return promise result
 }
 
 const mapStateToProps = state => ({
