@@ -4,7 +4,7 @@ import Header from '../../components/Header'
 const Login = () => {
   return (
     <div>
-       <Header/>
+       {/* <Header/> */}
       <div>Login</div>
     </div>
   )

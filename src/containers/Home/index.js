@@ -8,7 +8,7 @@ class Home extends Component {
     // console.log(this.props.list, 'constructor this.props.list')
     return (
       <div>
-        <Header/>
+        {/* <Header/> */}
         <div>Home, {this.props.name}</div>
         {this.getList()}
         <button onClick={() => {alert('click1')}}>click</button>
