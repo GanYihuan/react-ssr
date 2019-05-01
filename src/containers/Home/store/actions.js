@@ -8,7 +8,13 @@ const changeList = (list) => ({
   list
 })
 
-export const getHomeList = () => { // async
+export const getHomeList = (server) => { // async
+  let url = ''
+  if (server) {
+    url = 'http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE'
+  } else {
+    url = '/api/news.json?secret=PP87ANTIPIRATE'
+  }
   return (dispatch) => {
     // return promises result
     return axios
