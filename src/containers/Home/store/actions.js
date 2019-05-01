@@ -13,7 +13,8 @@ export const getHomeList = () => { // async
     // return promises result
     return axios
       // .get('http://47.95.113.63/ssr/api/news.json?secret=`${config.secret}`')
-      .get('http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE')
+      // .get('http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE')
+      .get('/api/news.json?secret=PP87ANTIPIRATE')
       .then((res) => {
         const list = res.data.data
         dispatch(changeList(list))
