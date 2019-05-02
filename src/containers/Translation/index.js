@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom' // 限于客户端重定向
 import Header from '../../components/Header'
 import { getTranslationList } from './store/actions'
+import styles from './style.css'
+import withStyle from './../../WithStyle'
 
 class Translation extends Component {
   render() {
     return this.props.login
       ?
-      <div>
+      <div className={styles.test}>
         {this.getList()}
       </div>
       :
@@ -41,7 +43,7 @@ const mapDispathToProps = dispatch => ({
 })
 
 // loadData 潜在问题修复
-const ExportTranslation = connect(mapStateToProps, mapDispathToProps)(Translation)
+const ExportTranslation = connect(mapStateToProps, mapDispathToProps)(withStyle(Translation, styles))
 ExportTranslation.loadData = (store) => {
   return store.dispatch(getTranslationList())
 }

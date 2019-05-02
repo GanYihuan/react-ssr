@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Header from '../../components/Header'
 import {getHomeList} from './store/actions'
 import styles from './style.css'
+import withStyle from './../../WithStyle'
 
 class Home extends Component {
   render() {
@@ -21,11 +22,11 @@ class Home extends Component {
       this.props.getHomeList()
     }
   }
-  componentWillMount() {
-    if (this.props.staticContext) { // css 服务器端渲染
-      this.props.staticContext.css.push(styles._getCss())
-    }
-  }
+  // componentWillMount() {
+  //   if (this.props.staticContext) { // css 服务器端渲染
+  //     this.props.staticContext.css.push(styles._getCss())
+  //   }
+  // }
   getList() {
     const {list} = this.props
     return list.map(item => <div key={item.id}>{item.title}</div>)
@@ -59,7 +60,7 @@ const mapDispathToProps = dispatch => ({
 })
 
 // loadData 潜在问题修复
-const ExportHome = connect(mapStateToProps, mapDispathToProps)(Home)
+const ExportHome = connect(mapStateToProps, mapDispathToProps)(withStyle(Home, styles))
 ExportHome.loadData = (store) => {
   return store.dispatch(getHomeList())
 }

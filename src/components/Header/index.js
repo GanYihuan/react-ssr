@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { actions } from './store'
 import styles from './style.css'
+import withStyle from './../../WithStyle'
 
 class Header extends Component {
   render() {
@@ -26,11 +27,11 @@ class Header extends Component {
       </div>
     )
   }
-  componentWillMount() {
-    if (this.props.staticContext) { // css 服务器端渲染
-      this.props.staticContext.css.push(styles._getCss())
-    }
-  }
+  // componentWillMount() {
+  //   if (this.props.staticContext) { // css 服务器端渲染
+  //     this.props.staticContext.css.push(styles._getCss())
+  //   }
+  // }
 }
 
 // const Header = (props) => {
@@ -68,4 +69,4 @@ const mapDispatch = (dispatch) => ({
 export default connect(
   mapState,
   mapDispatch
-)(Header)
+)(withStyle(Header, styles))
