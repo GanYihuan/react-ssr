@@ -2,12 +2,13 @@
 import { connect } from 'react-redux'
 import Header from '../../components/Header'
 import {getHomeList} from './store/actions'
+import styles from './style.css'
 
 class Home extends Component {
   render() {
     // console.log(this.props.list, 'constructor this.props.list')
     return (
-      <div>
+      <div className={styles.test}>
         {/* <Header/> */}
         <div>Home, {this.props.name}</div>
         {this.getList()}
