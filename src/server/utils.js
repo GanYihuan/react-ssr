@@ -30,7 +30,7 @@ export const render = (store, routes, req, context) => {
       </StaticRouter>
     </Provider>
   ))
-  const cssStr = context.css ? context.css : '' // css 服务器端渲染
+  const cssStr = context.css.length ? context.css.join('\n') : '' // css 服务器端渲染
   return `
     <html>
       <head>

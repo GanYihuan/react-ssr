@@ -23,7 +23,7 @@ class Home extends Component {
   }
   componentWillMount() {
     if (this.props.staticContext) { // css 服务器端渲染
-      this.props.staticContext.css = styles._getCss()
+      this.props.staticContext.css.push(styles._getCss())
     }
   }
   getList() {

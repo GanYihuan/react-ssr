@@ -2,13 +2,14 @@
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { actions } from './store'
+import styles from './style.css'
 
 class Header extends Component {
   render() {
     const { login, handleLogin, handleLogout } = this.props
     console.log(login)
     return (
-      <div>
+      <div className={styles.test}>
         <Link to='/'>首页</Link>
         <br />
         {
@@ -24,6 +25,11 @@ class Header extends Component {
         }
       </div>
     )
+  }
+  componentWillMount() {
+    if (this.props.staticContext) { // css 服务器端渲染
+      this.props.staticContext.css.push(styles._getCss())
+    }
   }
 }
 
