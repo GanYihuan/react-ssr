@@ -32,6 +32,9 @@ app.get('*', function(req, res) {
       const context = {}
       const html = render(store, routes, req, context)
       // console.log(context)
+      if (context.action === 'REPLACE') { // 301 重定向, StaticRouter 发现有 Redict 就会注入 context 301 重定向内容
+        res.redirect(301, context.url)
+      }
       if (context.NOT_FOUND) {
         res.status(404)
         res.send(html)

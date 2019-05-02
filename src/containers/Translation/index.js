@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom' // 限于客户端重定向
 import Header from '../../components/Header'
 import { getTranslationList } from './store/actions'
 
