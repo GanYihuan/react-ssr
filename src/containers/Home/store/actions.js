@@ -16,15 +16,15 @@ export const getHomeList = (server) => { // async
     // return promises result
     // return request
     //   // .get('http://47.95.113.63/ssr/api/news.json?secret=`${config.secret}`')
-    //   // .get('http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE')
-    //   .get('/api/news.json?secret=PP87ANTIPIRATE')
+    //   // .get('http://47.95.113.63/ssr/api/news.json')
+    //   .get('/api/news.json')
     //   .then((res) => {
     //     const list = res.data.data
     //     dispatch(changeList(list))
     //     // console.log(res.data.data, 'res.data')
     //   })
     return axiosInstance
-      .get('/api/news.json?secret=PP87ANTIPIRATE')
+      .get('/api/news.json')
       .then((res) => {
         const list = res.data.data
         dispatch(changeList(list))

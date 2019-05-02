@@ -8,7 +8,7 @@ const changeList = (list) => ({
 export const getTranslationList = () => { // async
   return (dispatch, getState, axiosInstance) => { // axiosInstance： withExtraArgument 传递的参数
     return axiosInstance
-      .get('/api/translations.json?secret=PP87ANTIPIRATE')
+      .get('/api/translations.json')
       .then((res) => {
         if (res.data.success) {
           const list = res.data.data
