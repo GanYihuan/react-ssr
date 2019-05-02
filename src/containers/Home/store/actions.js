@@ -1,5 +1,4 @@
 ﻿// import axios from 'axios'
-import config from '../../../config'
 import {CHANGE_LIST} from './constants'
 // import clientAxios from '../../../client/request'
 // import serverAxios from '../../../server/request'

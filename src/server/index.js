@@ -22,7 +22,14 @@ app.get('*', function(req, res) {
   const promises = []
   matchedRoutes.forEach(item => { // 让 matchRoutes 里面所有组件对应的 loadData 方法执行一次
     if (item.route.loadData) {
-      promises.push(item.route.loadData(store))
+      const promise = new Promise((resolve, reject) => {
+        item.route
+          .loadData(store)
+          .then(resolve)
+          .catch(resolve)
+      })
+      // promises.push(item.route.loadData(store))
+      promises.push(promise)
     }
     // item.route.loadData(store) // 调用匹配到的路由组件, 执行该组件下的 lodaData()
   })
@@ -42,6 +49,21 @@ app.get('*', function(req, res) {
         res.send(html)
       }
     })
+    // .catch(() => {
+    //   res.send('request error!')
+    //         const context = {}
+    //   const html = render(store, routes, req, context)
+    //   // console.log(context)
+    //   if (context.action === 'REPLACE') { // 301 重定向, StaticRouter 发现有 Redict 就会注入 context 301 重定向内容
+    //     res.redirect(301, context.url)
+    //   }
+    //   if (context.NOT_FOUND) {
+    //     res.status(404)
+    //     res.send(html)
+    //   } else {
+    //     res.send(html)
+    //   }
+    // })
 })
 
 let server = app.listen(3000)

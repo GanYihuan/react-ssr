@@ -1174,7 +1174,7 @@ eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/.16.8.6
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/.0.18.0@axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _config = __webpack_require__(/*! ../config */ \"./src/config/index.js\");\n\nvar _config2 = _interopRequireDefault(_config);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n  baseURL: '/',\n  params: {\n    secret: _config2.default.secret\n  }\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/client/request.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/.0.18.0@axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _config = __webpack_require__(/*! ../config */ \"./src/config.js\");\n\nvar _config2 = _interopRequireDefault(_config);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n  baseURL: '/',\n  params: {\n    secret: _config2.default.secret\n  }\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/client/request.js?");
 
 /***/ }),
 
@@ -1238,15 +1238,15 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
-/***/ "./src/config/index.js":
-/*!*****************************!*\
-  !*** ./src/config/index.js ***!
-  \*****************************/
+/***/ "./src/config.js":
+/*!***********************!*\
+  !*** ./src/config.js ***!
+  \***********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = {\n  secret: 'PP87ANTIPIRATE'\n};\n\n//# sourceURL=webpack:///./src/config/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = {\n  secret: 'PP87ANTIPIRATE'\n};\n\n//# sourceURL=webpack:///./src/config.js?");
 
 /***/ }),
 
@@ -1270,7 +1270,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getHomeList = undefined;\n\nvar _config = __webpack_require__(/*! ../../../config */ \"./src/config/index.js\");\n\nvar _config2 = _interopRequireDefault(_config);\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/containers/Home/store/constants.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// import clientAxios from '../../../client/request'\n// import serverAxios from '../../../server/request'\n\n// action creator\n// import axios from 'axios'\nvar changeList = function changeList(list) {\n  return {\n    type: _constants.CHANGE_LIST,\n    list: list\n  };\n};\n\nvar getHomeList = exports.getHomeList = function getHomeList(server) {\n  // async\n  // const request = server ? serverAxios : clientAxios\n  return function (dispatch, getState, axiosInstance) {\n    // axiosInstance： withExtraArgument 传递的参数\n    // return promises result\n    // return request\n    //   // .get('http://47.95.113.63/ssr/api/news.json?secret=`${config.secret}`')\n    //   // .get('http://47.95.113.63/ssr/api/news.json')\n    //   .get('/api/news.json')\n    //   .then((res) => {\n    //     const list = res.data.data\n    //     dispatch(changeList(list))\n    //     // console.log(res.data.data, 'res.data')\n    //   })\n    return axiosInstance.get('/api/news.json').then(function (res) {\n      var list = res.data.data;\n      dispatch(changeList(list));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getHomeList = undefined;\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/containers/Home/store/constants.js\");\n\n// import clientAxios from '../../../client/request'\n// import serverAxios from '../../../server/request'\n\n// action creator\nvar changeList = function changeList(list) {\n  return {\n    type: _constants.CHANGE_LIST,\n    list: list\n  };\n}; // import axios from 'axios'\nvar getHomeList = exports.getHomeList = function getHomeList(server) {\n  // async\n  // const request = server ? serverAxios : clientAxios\n  return function (dispatch, getState, axiosInstance) {\n    // axiosInstance： withExtraArgument 传递的参数\n    // return promises result\n    // return request\n    //   // .get('http://47.95.113.63/ssr/api/news.json?secret=`${config.secret}`')\n    //   // .get('http://47.95.113.63/ssr/api/news.json')\n    //   .get('/api/news.json')\n    //   .then((res) => {\n    //     const list = res.data.data\n    //     dispatch(changeList(list))\n    //     // console.log(res.data.data, 'res.data')\n    //   })\n    return axiosInstance.get('/api/news.json').then(function (res) {\n      var list = res.data.data;\n      dispatch(changeList(list));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
 
 /***/ }),
 
@@ -1390,7 +1390,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/.0.18.0@axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _config = __webpack_require__(/*! ../config */ \"./src/config/index.js\");\n\nvar _config2 = _interopRequireDefault(_config);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar createInstance = function createInstance(req) {\n  return _axios2.default.create({\n    baseURL: 'http://47.95.113.63/ssr',\n    headers: {\n      cookie: req.get('cookie') || ''\n    },\n    params: {\n      secret: _config2.default.secret\n    }\n  });\n};\n\nexports.default = createInstance;\n\n//# sourceURL=webpack:///./src/server/request.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/.0.18.0@axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _config = __webpack_require__(/*! ../config */ \"./src/config.js\");\n\nvar _config2 = _interopRequireDefault(_config);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar createInstance = function createInstance(req) {\n  return _axios2.default.create({\n    baseURL: 'http://47.95.113.63/ssr',\n    headers: {\n      cookie: req.get('cookie') || ''\n    },\n    params: {\n      secret: _config2.default.secret\n    }\n  });\n};\n\nexports.default = createInstance;\n\n//# sourceURL=webpack:///./src/server/request.js?");
 
 /***/ }),
 
