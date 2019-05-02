@@ -9,7 +9,7 @@ class Home extends Component {
   render() {
     // console.log(this.props.list, 'constructor this.props.list')
     return (
-      <div className={styles.test}>
+      <div className={styles.container}>
         {/* <Header/> */}
         <div>Home, {this.props.name}</div>
         {this.getList()}

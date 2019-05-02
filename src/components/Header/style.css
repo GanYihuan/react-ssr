@@ -1,3 +1,23 @@
 ﻿.test {
   background: #0f0;
 }
+
+.item {
+  display: inline-block;
+  color: #333;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.item:hover {
+  color: #999;
+}
+
+.container {
+  height: 40px;
+  padding-top: 9px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}

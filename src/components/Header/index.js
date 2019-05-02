@@ -8,21 +8,19 @@ import withStyle from './../../WithStyle'
 class Header extends Component {
   render() {
     const { login, handleLogin, handleLogout } = this.props
-    console.log(login)
+    // console.log(login)
     return (
-      <div className={styles.test}>
+      <div className={styles.container}>
         <Link to='/'>首页</Link>
-        <br />
         {
           login
             ?
             <Fragment>
-              <Link to='/translation'>翻译列表</Link>
-              <br />
-              <div onClick={handleLogout}>退出</div>
+              <Link to='/translation' className={styles.item}>翻译列表</Link>
+              <div onClick={handleLogout} className={styles.item}>退出</div>
             </Fragment>
             :
-            <div onClick={handleLogin}>登录</div>
+            <div onClick={handleLogin} className={styles.item}>登录</div>
         }
       </div>
     )

@@ -10,7 +10,7 @@ class Translation extends Component {
   render() {
     return this.props.login
       ?
-      <div className={styles.test}>
+      <div className={styles.container}>
         {this.getList()}
       </div>
       :
