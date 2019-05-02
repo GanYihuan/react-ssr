@@ -30,10 +30,12 @@ export const render = (store, routes, req, context) => {
       </StaticRouter>
     </Provider>
   ))
+  const cssStr = context.css ? context.css : '' // css 服务器端渲染
   return `
     <html>
       <head>
         <title>ssr</title>
+        <style>${cssStr}</style>
       </head>
       <body>
         <div id="root">${content}</div>

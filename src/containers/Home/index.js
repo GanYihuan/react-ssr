@@ -21,6 +21,11 @@ class Home extends Component {
       this.props.getHomeList()
     }
   }
+  componentWillMount() {
+    if (this.props.staticContext) { // css 服务器端渲染
+      this.props.staticContext.css = styles._getCss()
+    }
+  }
   getList() {
     const {list} = this.props
     return list.map(item => <div key={item.id}>{item.title}</div>)
