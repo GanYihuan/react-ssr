@@ -1,6 +1,7 @@
-﻿import React, { Component } from 'react'
+﻿import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom' // 限于客户端重定向
+import { Helmet } from 'react-helmet' // 定制页面 title & description
 import Header from '../../components/Header'
 import { getTranslationList } from './store/actions'
 import styles from './style.css'
@@ -10,9 +11,15 @@ class Translation extends Component {
   render() {
     return this.props.login
       ?
-      <div className={styles.container}>
-        {this.getList()}
-      </div>
+      <Fragment>
+        <Helmet>
+          <title>gan react-ssr</title>
+          <meta name='description' content='gan react-ssr' />
+        </Helmet>
+        <div className={styles.container}>
+          {this.getList()}
+        </div>
+      </Fragment>
       :
       <Redirect to='/' />
   }

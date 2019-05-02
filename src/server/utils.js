@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter, Route, matchPath } from 'react-router-dom' // 服务器端渲染路由
 import { renderRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
+import { Helmet } from 'react-helmet' // 定制页面 title & description
 
 export const render = (store, routes, req, context) => {
   // routes.some(route => {
@@ -30,11 +31,13 @@ export const render = (store, routes, req, context) => {
       </StaticRouter>
     </Provider>
   ))
+  const helmet = Helmet.renderStatic() // 服务器端 helmet
   const cssStr = context.css.length ? context.css.join('\n') : '' // css 服务器端渲染
   return `
     <html>
       <head>
-        <title>ssr</title>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
         <style>${cssStr}</style>
       </head>
       <body>

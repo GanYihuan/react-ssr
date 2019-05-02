@@ -1,7 +1,8 @@
-﻿import React, {Component} from 'react'
+﻿import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet' // 定制页面 title & description
 import Header from '../../components/Header'
-import {getHomeList} from './store/actions'
+import { getHomeList } from './store/actions'
 import styles from './style.css'
 import withStyle from './../../WithStyle'
 
@@ -9,12 +10,17 @@ class Home extends Component {
   render() {
     // console.log(this.props.list, 'constructor this.props.list')
     return (
-      <div className={styles.container}>
-        {/* <Header/> */}
-        <div>Home, {this.props.name}</div>
-        {this.getList()}
-        <button onClick={() => {alert('click1')}}>click</button>
-      </div>
+      <Fragment>
+        <Helmet>
+          <title>gan react-ssr</title>
+          <meta name='description' content='gan react-ssr' />
+        </Helmet>
+        <div className={styles.container}>
+          <div>Home, {this.props.name}</div>
+          {this.getList()}
+          <button onClick={() => {alert('click1')}}>click</button>
+        </div>
+      </Fragment>
     )
   }
   componentDidMount() { // 只在客户端渲染
@@ -29,7 +35,7 @@ class Home extends Component {
   // }
   getList() {
     const {list} = this.props
-    return list.map(item => <div key={item.id}>{item.title}</div>)
+    return list.map(item => <div className={styles.item} key={item.id}>{item.title}</div>)
   }
 }
 
