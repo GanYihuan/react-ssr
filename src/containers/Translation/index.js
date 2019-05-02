@@ -25,9 +25,9 @@ class Translation extends Component {
   }
 }
 
-Translation.loadData = (store) => {
-  return store.dispatch(getTranslationList())
-}
+// Translation.loadData = (store) => {
+//   return store.dispatch(getTranslationList())
+// }
 
 const mapStateToProps = state => ({
   list: state.translation.translationList,
@@ -40,7 +40,15 @@ const mapDispathToProps = dispatch => ({
   }
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispathToProps
-)(Translation)
+// loadData 潜在问题修复
+const ExportTranslation = connect(mapStateToProps, mapDispathToProps)(Translation)
+ExportTranslation.loadData = (store) => {
+  return store.dispatch(getTranslationList())
+}
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispathToProps
+// )(Translation)
+
+export default ExportTranslation

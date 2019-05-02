@@ -43,9 +43,9 @@ class Home extends Component {
 // }
 
 // 服务器端渲染前把这个路由需要的数据提前加载好
-Home.loadData = (store) => {
-  return store.dispatch(getHomeList()) // return promises result, because getHomeList() return promise result
-}
+// Home.loadData = (store) => {
+//   return store.dispatch(getHomeList()) // return promises result, because getHomeList() return promise result
+// }
 
 const mapStateToProps = state => ({
   list: state.home.newList,
@@ -58,7 +58,15 @@ const mapDispathToProps = dispatch => ({
   }
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispathToProps
-)(Home)
+// loadData 潜在问题修复
+const ExportHome = connect(mapStateToProps, mapDispathToProps)(Home)
+ExportHome.loadData = (store) => {
+  return store.dispatch(getHomeList())
+}
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispathToProps
+// )(Home)
+
+export default ExportHome
