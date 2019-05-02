@@ -4,7 +4,7 @@ import { StaticRouter, Route, matchPath } from 'react-router-dom' // 服务器�
 import { renderRoutes } from 'react-router-config'
 import { Provider } from 'react-redux'
 
-export const render = (store, routes, req) => {
+export const render = (store, routes, req, context) => {
   // routes.some(route => {
   //   const match = matchPath(req.path, route)
   //   if (match) {
@@ -16,7 +16,7 @@ export const render = (store, routes, req) => {
     // context 数据通信
     // location 路径
     <Provider store={store}>
-      <StaticRouter context={{}} location={req.path}>
+      <StaticRouter context={context} location={req.path}>
         <div>
           {
             renderRoutes(routes)
